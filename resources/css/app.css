@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import "tailwindcss";
+@source "../views";
+
+@theme {
+    --color-jaffa-50: #fff6ed;
+    --color-jaffa-100: #ffead4;
+    --color-jaffa-200: #ffd2a8;
+    --color-jaffa-300: #ffb271;
+    --color-jaffa-400: #ff8c42;
+    --color-jaffa-500: #fe6411;
+    --color-jaffa-600: #ef4907;
+    --color-jaffa-700: #c63408;
+    --color-jaffa-800: #9d2b0f;
+    --color-jaffa-900: #7e2610;
+    --color-jaffa-950: #440f06;
+}
+
+* {
+    font-family: Nunito, sans-serif;
+}
+
