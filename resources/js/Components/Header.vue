@@ -15,14 +15,14 @@ const isHiddenPage = computed(() =>
 </script>
 
 <template>
-    <header class="border-b-1 border-stone-700">
+    <header class="sticky top-0 z-10 bg-neutral-800 border-b-1 border-stone-700 sm:[position:unset]">
         <Container>
-            <div class="flex justify-between items-center my-5">
+            <div class="flex justify-between items-center py-5">
                 <Link href="/">
-                    <div class="flex items-center gap-x-4">
+                    <div class="flex items-center gap-x-2 sm:gap-x-4">
                         <img src="/images/icons/logo.png" alt="Logo Inertia Pizza">
-                        <div class="text-white text-2xl font-bold leading-5">INERTIA PIZZA <br>
-                            <span class="text-base text-jaffa-400 font-normal">вкусно – когда вкусно</span>
+                        <div class="text-white text-xl font-bold leading-5 sm:text-2xl">INERTIA PIZZA <br>
+                            <span class="hidden text-base text-jaffa-400 font-normal sm:block">вкусно – когда вкусно</span>
                         </div>
                     </div>
                 </Link>

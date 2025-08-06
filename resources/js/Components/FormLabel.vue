@@ -6,7 +6,7 @@ const attrs = useAttrs();
 <template>
     <label
         v-bind="attrs"
-        class="inline-block mb-1 font-bold">
+        class="text-sm inline-block mb-1 font-bold sm:text-base">
         <slot/>
     </label>
 </template>

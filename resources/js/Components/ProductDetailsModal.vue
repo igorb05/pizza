@@ -46,18 +46,18 @@ useClickOutside(modalRef, modalStore.closeProductDetails, true);
 <template>
     <div
         class="fixed inset-0 bg-stone-700/70 z-10 flex justify-center items-center">
-        <div ref="modalRef" class="relative max-w-3xl w-full bg-stone-100 dark:bg-neutral-800 rounded-2xl">
+        <div ref="modalRef" class="relative overflow-y-scroll w-full max-w-3xl bg-neutral-800 sm:rounded-2xl sm:overflow-y-visible">
             <button @click="modalStore.closeProductDetails"
-                    class="absolute top-0 -right-8 text-3xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150">
+                    class="absolute top-2.5 right-5 z-10 text-3xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150 sm:-right-8 sm:top-0">
                 x
             </button>
 
-            <div class="flex gap-x-4">
-                <div class="flex items-center relative min-w-xs bg-stone-700 p-8 rounded-l-2xl">
+            <div class="flex flex-col h-screen gap-x-4 sm:flex-row sm:h-max">
+                <div class="flex items-center relative min-w-xs bg-stone-700 p-8 sm:rounded-l-2xl">
                     <img :src="pizza.image"
                          :alt="pizza.name"
                          :class="[
-                            'rounded-lg transition mb-4',
+                            'rounded-lg transition mb-4 mx-auto',
                             selectedSize === 'small' && 'scale-75',
                             selectedSize === 'medium' && 'scale-90',
                             selectedSize === 'large' && 'scale-100'
@@ -66,25 +66,25 @@ useClickOutside(modalRef, modalStore.closeProductDetails, true);
                 <div class="flex flex-col p-8">
                     <div class="text-3xl font-bold dark:text-white">{{ pizza.name }}</div>
                     <div class="text-sm text-stone-400 mt-1.5">{{ sizeDescription }}</div>
-                    <div class="flex justify-between p-1 mt-4 dark:text-white dark:bg-stone-700 rounded-2xl">
+                    <div class="flex justify-between p-1 mt-4 overflow-x-auto text-white bg-stone-700 rounded-2xl">
                         <button
                             v-for="size in sizes"
                             :key="size.key"
                             @click="selectSize(size.key)"
                             :class="[
                                 'w-full px-6 py-2.5 rounded-2xl cursor-pointer transition-colors',
-                                selectedSize === size.key ? 'bg-orange-200 dark:bg-jaffa-400/30' : 'bg-transparent'
+                                selectedSize === size.key ? 'bg-jaffa-400/30' : 'bg-transparent'
                             ]">
                             {{ size.label }}
                         </button>
                     </div>
-                    <div class="flex justify-between p-1 mt-4 dark:text-white dark:bg-stone-700 rounded-2xl">
+                    <div class="flex justify-between p-1 mt-4 text-white bg-stone-700 rounded-2xl">
                         <button
                             v-for="crust in crusts"
                             :key="crust.key"
                             @click="selectCrust(crust.key)"
                             :class="['w-full px-6 py-2.5 rounded-2xl cursor-pointer transition-colors',
-                                    selectedCrust === crust.key ? 'bg-orange-200 dark:bg-jaffa-400/30' : 'bg-transparent']">
+                                    selectedCrust === crust.key ? 'bg-jaffa-400/30' : 'bg-transparent']">
                             {{ crust.label }}
                         </button>
                     </div>
@@ -99,11 +99,11 @@ useClickOutside(modalRef, modalStore.closeProductDetails, true);
                             <div class="mt-2 text-sm/4 dark:text-white text-pretty text-center">{{ item.label }}</div>
                         </div>
                     </div>
-                    <div class="mt-4 flex justify-between items-center">
+                    <div class="flex justify-between items-center mt-8 sm:mt-4">
                         <span class="text-xl font-bold dark:text-white">{{ calculatedPrice }} ₽</span>
                         <CommonButton
                             @click="addToCart"
-                            margin-class="mt-10"
+                            margin-class="sm:mt-10"
                             width-class="w-max"
                         >
                             Добавить в корзину

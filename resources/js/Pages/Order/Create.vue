@@ -84,12 +84,13 @@ const orderStore = () => {
             <title>Inertia Pizza – оформление заказа</title>
         </Head>
         <Container v-auto-animate>
-            <h1 v-if="cart.length >= 1" class="text-4xl font-bold dark:text-white my-12">Оформление заказа</h1>
-            <div class="flex gap-10 mb-12" v-if="cart.length >= 1">
-                <div class="flex flex-col gap-10 dark:text-white w-3xl">
+            <h1 v-if="cart.length >= 1" class="text-3xl font-bold dark:text-white my-6 sm:text-4xl sm:my-12">Оформление
+                заказа</h1>
+            <div class="flex flex-col gap-5 mb-6 sm:gap-10 sm:mb-12 xl:flex-row" v-if="cart.length >= 1">
+                <div class="flex max-w-[calc(--w-screen-15px)] flex-col gap-7 dark:text-white md:w-3xl sm:gap-10">
                     <CommonCard>
-                        <div class="flex justify-between items-center pb-6 border-b-1 border-stone-900/20">
-                            <div class="text-2xl font-bold">1. Корзина</div>
+                        <div class="flex justify-between items-center pb-3 border-b-1 border-stone-900/20 sm:pb-6">
+                            <div class="text-xl font-bold sm:text-2xl">1. Корзина</div>
                             <div
                                 class="flex items-center gap-x-1.5 text-stone-400 hover:text-jaffa-400 transition cursor-pointer"
                                 @click="cartStore.clearCart()">
@@ -98,17 +99,17 @@ const orderStore = () => {
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                           d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
                                 </svg>
-                                Очистить корзину
+                                <span class="hidden sm:block">Очистить корзину</span>
                             </div>
                         </div>
                         <div v-auto-animate>
                             <div v-for="(pizza, index) in cart" :key="index"
-                                 class="flex justify-between items-center gap-x-12 py-8">
-                                <div class="flex flex-1 items-center gap-x-5">
-                                    <img :src="pizza.image" :alt="pizza.name" class="w-20 h-20">
-                                    <div>
-                                        <div class="text-lg font-bold">{{ pizza.name }}</div>
-                                        <div class="text-sm text-stone-400">{{ pizza.crust }} / {{ pizza.size }}
+                                 class="grid grid-cols-2 row-auto items-center gap-x-6 gap-y-3 py-4 sm:flex sm:justify-between sm:gap-x-12 sm:py-8">
+                                <div class="grid grid-cols-4 col-span-full items-center gap-x-2.5 sm:gap-x-5 sm:flex sm:flex-1">
+                                    <img :src="pizza.image" :alt="pizza.name" class="col-span-1 w-14 h-14 sm:w-20 sm:h-20">
+                                    <div class="col-span-3">
+                                        <div class="text-base font-bold sm:text-lg">{{ pizza.name }}</div>
+                                        <div class="text-xs text-stone-400 sm:text-sm">{{ pizza.crust }} / {{ pizza.size }}
                                             <span v-if="pizza.addons && pizza.addons.length >= 1">
                                                 / Добавки — {{ pizza.addons.join(', ').toLowerCase() }}
                                             </span>
@@ -116,7 +117,7 @@ const orderStore = () => {
                                     </div>
                                 </div>
                                 <div class="font-bold">{{ pizza.price }} ₽</div>
-                                <div class="flex items-center gap-x-2 font-bold ">
+                                <div class="flex items-center justify-self-end gap-x-2 font-bold">
                                     <div @click="decrement(index)"
                                          class="select-none border border-jaffa-500 hover:bg-jaffa-500 transition rounded-lg cursor-pointer text-xl px-2">
                                         −
@@ -131,10 +132,10 @@ const orderStore = () => {
                         </div>
                     </CommonCard>
                     <CommonCard>
-                        <div class="flex justify-between items-center pb-6 border-b-1 border-stone-900/20">
-                            <div class="text-2xl font-bold">2. Персональная информация</div>
+                        <div class="flex justify-between items-center pb-3 border-b-1 border-stone-900/20 sm:pb-6">
+                            <div class="text-xl font-bold sm:text-2xl">2. Персональная информация</div>
                         </div>
-                        <div class="grid grid-cols-2 gap-x-6 gap-y-10 py-8">
+                        <div class="grid grid-cols gap-y-5 py-4 sm:grid-cols-2 sm:gap-x-6 sm:py-8 md:gap-y-10">
                             <div>
                                 <Label for="first_name">Имя</Label>
                                 <Input name="first_name" type="text" :errors="errors" v-model="form.first_name"/>
@@ -154,10 +155,10 @@ const orderStore = () => {
                         </div>
                     </CommonCard>
                     <CommonCard>
-                        <div class="flex justify-between items-center pb-6 border-b-1 border-stone-900/20">
-                            <div class="text-2xl font-bold">3. Адрес доставки</div>
+                        <div class="flex justify-between items-center pb-3 border-b-1 border-stone-900/20 sm:pb-6">
+                            <div class="text-xl font-bold sm:text-2xl">3. Адрес доставки</div>
                         </div>
-                        <div class="grid gap-x-6 gap-y-8 py-8">
+                        <div class="grid gap-y-5 py-4 sm:py-8 md:gap-y-10">
                             <div>
                                 <Label for="address">Адрес</Label>
                                 <Input name="address" type="text" :errors="errors" v-model="form.address"/>
@@ -170,12 +171,12 @@ const orderStore = () => {
                     </CommonCard>
                 </div>
                 <div class="flex flex-col flex-grow text-white">
-                    <CommonCard>
-                        <div class="pb-6 border-b-1 border-stone-900/20">
-                            <div class="text-xl">Итого:</div>
-                            <div class="text-3xl font-bold">{{ totalPrice }} ₽</div>
+                    <CommonCard width-class="max-w-md xl:max-w-[unset]">
+                        <div class="pb-3 border-b-1 border-stone-900/20 sm:pb-6">
+                            <div class="text-lg sm:text-xl">Итого:</div>
+                            <div class="text-2xl font-bold sm:text-3xl">{{ totalPrice }} ₽</div>
                         </div>
-                        <div class="flex items-center justify-between mt-7">
+                        <div class="flex items-center justify-between mt-3 sm:mt-6">
                             <div class="flex items-center gap-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5"

@@ -47,10 +47,10 @@ const profileUpdate = () => {
     </Head>
     <AppLayout>
         <Container>
-            <h1 class="text-4xl font-bold dark:text-white my-12">Настройки профиля</h1>
+            <h1 class="text-3xl font-bold dark:text-white my-6 sm:text-4xl sm:my-12">Настройки профиля</h1>
             <div class="flex gap-10">
                 <CommonCard width-class="w-4xl">
-                    <div class="text-white grid grid-cols-2 gap-x-6 gap-y-10 py-8">
+                    <div class="text-white grid grid-cols-none gap-x-6 gap-y-5 pt-4 pb-8 sm:grid-cols-2 sm:gap-y-10 sm:py-8">
                         <div>
                             <Label for="first_name">Имя</Label>
                             <Input name="first_name" type="text" v-model="form.first_name" :errors="errors"/>
@@ -67,7 +67,7 @@ const profileUpdate = () => {
                             <Label for=phone>Телефон</Label>
                             <Input name="phone" type="tel" v-model="form.phone" :errors="errors"/>
                         </div>
-                        <div class="col-span-2">
+                        <div class="sm:col-span-2">
                             <Label for=address>Адрес</Label>
                             <Input name="address" type="text" v-model="form.address" :errors="errors"/>
                         </div>

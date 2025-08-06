@@ -35,9 +35,9 @@ const statusLabels = {
     <AppLayout>
         <Container>
             <h1 v-if="orders.length"
-                class="text-4xl font-bold dark:text-white my-12">Мои заказы</h1>
+                class="text-3xl font-bold dark:text-white my-6 sm:text-4xl sm:my-12">Мои заказы</h1>
             <div v-if="orders.length"
-                 class="flex flex-col gap-y-10 mb-12">
+                 class="flex flex-col gap-y-5 mb-12 sm:gap-y-10">
                 <CommonCard
                     v-for="order in props.orders"
                     :key="order.id"
@@ -46,7 +46,7 @@ const statusLabels = {
                     <div class="flex justify-between items-center mb-4">
                         <div>
                             <div class="text-white font-bold text-lg">Заказ №{{ order.id }}
-                                <span class="text-sm text-stone-400 font-medium">от {{
+                                <span class="text-sm text-stone-400 text-nowrap font-medium">от {{
                                         format(new Date(order.created_at), 'dd.MM.yyyy HH:mm')
                                     }}</span>
                             </div>
@@ -58,7 +58,7 @@ const statusLabels = {
                             </span>
                             </div>
                         </div>
-                        <div class="text-jaffa-500 font-bold text-xl">{{ order.total_price }} ₽</div>
+                        <div class="text-lg text-jaffa-500 text-nowrap font-bold sm:text-xl">{{ order.total_price }} ₽</div>
                     </div>
                     <div class="space-y-4">
                         <div
@@ -66,17 +66,17 @@ const statusLabels = {
                             :key="item.id"
                             class="flex items-center gap-4 border-t border-stone-900/20 pt-4"
                         >
-                            <img :src="item.pizza.image" class="w-20 h-20 object-cover" :alt="item.pizza.name "/>
+                            <img :src="item.pizza.image" class="w-14 h-14 sm:w-20 sm:h-20 object-cover" :alt="item.pizza.name "/>
                             <div class="flex-1">
-                                <div class="text-jaffa-400 text-xl font-bold">{{ item.pizza.name }}</div>
-                                <div class="text-sm text-stone-400">
+                                <div class="text-lg text-jaffa-400 font-bold sm:text-xl">{{ item.pizza.name }}</div>
+                                <div class="text-xs text-stone-400 sm:text-sm">
                                     {{ item.size }} / {{ item.crust }}
                                     <span v-if="item.addons && item.addons.length >= 3">
                                         / Добавки — {{ JSON.parse(item.addons).join(', ').toLowerCase() }}
                                     </span>
                                 </div>
                             </div>
-                            <div class="text-stone-400 font-semibold">{{ item.unit_price }} ₽ × {{ item.quantity }}</div>
+                            <div class="text-sm text-stone-400 font-semibold sm:text=base">{{ item.unit_price }} ₽ × {{ item.quantity }}</div>
                         </div>
                     </div>
                 </CommonCard>

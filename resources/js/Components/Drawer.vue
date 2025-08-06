@@ -33,12 +33,12 @@ useClickOutside(drawerRef, cartStore.closeDrawer, true);
 </script>
 
 <template>
-    <div class="fixed top-0 left-0 w-full h-full bg-stone-700/70 z-10">
-        <div ref="drawerRef" class="fixed bg-neutral-800 w-128 h-full top-0 right-0 z-20 p-10">
+    <div class="fixed top-0 left-0 w-full h-full bg-stone-700/70 z-30">
+        <div ref="drawerRef" class="fixed overflow-y-scroll w-full bg-neutral-800 h-full top-0 right-0 z-20 p-5 sm:w-128 sm:p-10">
             <div class="flex items-center justify-between mb-5">
                 <h2 class="text-2xl font-bold text-white">Корзина</h2>
                 <div @click="cartStore.closeDrawer"
-                     class="text-2xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150">
+                     class="text-3xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150 sm:text-2xl">
                     ×
                 </div>
             </div>

@@ -35,14 +35,14 @@ useClickOutside(loginRef, modalStore.closeEmailAuth, true);
 <template>
     <div
         class="fixed inset-0 bg-stone-700/70 z-10 flex justify-center items-center">
-        <div ref="loginRef" class="relative max-w-md w-full bg-neutral-800 rounded-2xl px-11 py-12">
+        <div ref="loginRef" class="relative max-w-xs w-full bg-neutral-800 rounded-2xl px-11 py-12 sm:max-w-md">
             <button @click="modalStore.closeEmailAuth"
-                    class="absolute top-0 -right-8 text-3xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150">
+                    class="absolute top-2.5 right-5 z-10 text-3xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150 sm:top-0 sm:-right-8">
                 ×
             </button>
             <div class="flex items-center">
                 <div>
-                    <div class="text-4xl text-white">Вход в аккаунт</div>
+                    <div class="text-4xl text-white">Вход в&nbsp;аккаунт</div>
                     <div class="text-stone-400 mt-2.5">Введите ваш адрес электронной почты, чтобы войти или
                         зарегистрироваться
                     </div>

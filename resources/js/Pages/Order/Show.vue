@@ -34,15 +34,15 @@ const statusLabels = {
     </Head>
     <AppLayout>
         <Container>
-            <h1 class="text-4xl font-bold dark:text-white my-12">Ваш заказ</h1>
-            <div class="flex sm:flex-col lg:flex-row gap-10">
+            <h1 class="text-3xl font-bold dark:text-white my-6 sm:text-4xl sm:my-12">Ваш заказ</h1>
+            <div class="flex flex-col-reverse gap-5 lg:flex-row lg:gap-10">
                 <CommonCard
-                    width-class="w-3xl"
+                    width-class="max-w-3xl"
                 >
                     <div class="flex justify-between items-center mb-4">
                         <div>
                             <div class="text-white font-bold text-lg">Заказ №{{ currentOrder.id }}
-                                <span class="text-sm text-stone-400 font-medium">от {{
+                                <span class="text-sm text-stone-400 text-nowrap font-medium">от {{
                                         format(new Date(currentOrder.created_at), 'dd.MM.yyyy HH:mm')
                                     }}</span>
                             </div>
@@ -54,7 +54,7 @@ const statusLabels = {
                             </span>
                             </div>
                         </div>
-                        <div class="text-jaffa-500 font-bold text-xl">{{ currentOrder.total_price }} ₽</div>
+                        <div class="text-lg text-jaffa-500 font-bold text-nowrap sm:text-xl">{{ currentOrder.total_price }} ₽</div>
                     </div>
                     <div class="space-y-4">
                         <div
@@ -62,24 +62,24 @@ const statusLabels = {
                             :key="item.id"
                             class="flex items-center gap-4 border-t border-stone-900/20 py-4"
                         >
-                            <img :src="item.pizza.image" class="w-20 h-20 object-cover"
+                            <img :src="item.pizza.image" class="w-14 h-14 sm:w-20 sm:h-20 object-cover"
                                  :alt="item.pizza.name "/>
                             <div class="flex-1">
-                                <div class="text-jaffa-400 text-xl font-bold">{{ item.pizza.name }}</div>
-                                <div class="text-sm text-stone-400">
+                                <div class="text-lg text-jaffa-400 font-bold sm:text-xl">{{ item.pizza.name }}</div>
+                                <div class="text-xs text-stone-400 sm:text-sm">
                                     {{ item.size }} / {{ item.crust }}
                                     <span v-if="item.addons && item.addons.length >= 3">
                                         / Добавки — {{ JSON.parse(item.addons).join(', ').toLowerCase() }}
                                     </span>
                                 </div>
                             </div>
-                            <div class="text-stone-400 ">{{ item.unit_price }} ₽ × {{ item.quantity }}</div>
+                            <div class="text-sm text-stone-400 sm:text-base">{{ item.unit_price }} ₽ × {{ item.quantity }}</div>
                         </div>
                     </div>
                 </CommonCard>
                 <CommonCard
-                    width-class="flex-1 h-max">
-                    <div class="flex items-center gap-x-2 py-4 text-white leading-5 font-bold">
+                    width-class="flex-1 max-w-md h-max lg:max-w-[unset]">
+                    <div class="flex items-center gap-x-2 py-4 text-white text-sm leading-5 font-bold sm:text-base">
                         <div class="text-jaffa-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="size-6">
@@ -87,9 +87,9 @@ const statusLabels = {
                                       d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
                             </svg>
                         </div>
-                        <span>{{ currentOrder.first_name + ' ' + currentOrder.last_name }}</span>
+                        <span>{{ currentOrder.first_name + ' ' + currentOrder?.last_name }}</span>
                     </div>
-                    <div class="flex items-center gap-x-2 py-4 text-white leading-5 font-bold">
+                    <div class="flex items-center gap-x-2 py-4 text-white text-sm leading-5 font-bold sm:text-base">
                         <div class="text-jaffa-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="size-6">
@@ -102,7 +102,7 @@ const statusLabels = {
                         <span>{{ currentOrder.address }}</span>
                     </div>
                     <div v-if="currentOrder.comment"
-                         class="text-stone-400 border-t border-stone-900/20 py-4">Ваш комментарий:
+                         class="text-sm text-stone-400 border-t border-stone-900/20 py-2 sm:text-base sm:py-4">Ваш комментарий:
                         «{{ currentOrder.comment }}»
                     </div>
                 </CommonCard>

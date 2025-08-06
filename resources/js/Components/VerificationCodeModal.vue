@@ -2,10 +2,12 @@
 import {ref} from 'vue';
 import {useForm} from '@inertiajs/vue3';
 import {useModalStore} from '@/Stores/modal.js';
+import {useClickOutside} from '@/Composables/useClickOutside.js';
 import Input from '@/Components/FormInput.vue';
 import CommonButton from '@/Components/CommonButton.vue';
 
 const modalStore = useModalStore();
+const codeRef = ref(null);
 
 const form = useForm({
     email: modalStore.userEmail,
@@ -22,14 +24,16 @@ const verifyCode = () => {
         },
     })
 };
+
+useClickOutside(codeRef, modalStore.closeVerificationCode, true);
 </script>
 
 <template>
     <div
         class="fixed inset-0 bg-stone-700/70 z-10 flex justify-center items-center">
-        <div class="relative max-w-md w-full bg-neutral-800 rounded-2xl px-11 py-12">
+        <div ref="codeRef" class="relative max-w-xs w-full bg-neutral-800 rounded-2xl px-11 py-12 sm:max-w-md">
             <button @click="modalStore.closeVerificationCode"
-                    class="absolute top-0 -right-8 text-3xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150">
+                    class="absolute top-2.5 right-5 z-10 text-3xl font-bold text-white cursor-pointer transition hover:text-jaffa-400 hover:scale-150 sm:top-0 sm:-right-8">
                 ×
             </button>
             <div class="flex items-center">

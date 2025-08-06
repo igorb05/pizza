@@ -50,15 +50,15 @@ useClickOutside(menuRef, () => {
             @click="showMenu = !showMenu"
             :class="['flex items-center gap-2 hover:text-white hover:bg-jaffa-500 border focus:ring-2 focus:outline-none focus:ring-jaffa-600 font-medium rounded-2xl px-5 py-2.5 text-center border-jaffa-500 text-jaffa-500 cursor-pointer', showMenu ? '' : '']">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="size-5">
+                 stroke="currentColor" class="size-6 sm:size-5">
                 <path stroke-linecap="round" stroke-linejoin="round"
                       d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
             </svg>
-            Профиль
+            <span class="hidden sm:block">Профиль</span>
         </button>
         <ul v-if="showMenu"
             @mousemove="resetInactivityTimer"
-            class="absolute mt-2.5 top-full w-full right-0 bg-neutral-800 text-white rounded-2xl border border-stone-700 overflow-hidden">
+            class="absolute mt-2.5 top-full w-max right-0 bg-neutral-800 text-white rounded-2xl border border-stone-700 overflow-hidden sm:w-full">
             <li class="hover:bg-jaffa-400/30 cursor-pointer">
                 <Link href="/profile" class="inline-block px-5 pb-1 pt-2">Настройки</Link>
             </li>
@@ -80,8 +80,8 @@ useClickOutside(menuRef, () => {
         v-if="!isHiddenPage"
         @click="cartStore.openDrawer"
         :class="['relative flex border focus:ring-2 focus:outline-none font-medium rounded-2xl px-5 py-2.5 text-center border-jaffa-500 text-jaffa-500 hover:text-white hover:bg-jaffa-500 focus:ring-jaffa-900 cursor-pointer', cartStore.items.length ? 'bg-jaffa-500 text-white px-3' : '']">
-        <span v-if="cartStore.totalPrice" class="pe-3">{{ cartStore.totalPrice + ' ₽' }}</span>
-        <div :class="['flex', cartStore.items.length ? 'border-l-1 border-white/25 ps-3' : '']">
+        <span v-if="cartStore.totalPrice" class="hidden pe-3 md:block">{{ cartStore.totalPrice + ' ₽' }}</span>
+        <div :class="['flex', cartStore.items.length ? 'md:ps-3 md:border-white/25 md:border-l-1 ' : '']">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                  xmlns="http://www.w3.org/2000/svg"
                  class="size-5 transition">

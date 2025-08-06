@@ -20,10 +20,10 @@ const handleAddClick = () => {
 </script>
 
 <template>
-    <div class="flex flex-col justify-between w-2xs">
+    <div class="flex flex-col justify-between w-full sm:w-2xs">
         <div>
             <div class="bg-jaffa-400/30 rounded-2xl">
-                <img :src="pizza.image" alt="">
+                <img :src="pizza.image" alt="" class="mx-auto">
             </div>
             <div class="text-2xl dark:text-white mt-3.5">{{ pizza.name }}</div>
             <div class="text-sm text-stone-400 mt-1.5">{{ pizza.description }}</div>

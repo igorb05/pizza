@@ -34,8 +34,8 @@ const handleAddToCart = (item) => {
             />
         </Container>
         <Container>
-            <div class="flex gap-[60px] my-10">
-                <div class="flex flex-col min-w-3xs">
+            <div class="flex flex-col gap-[60px] my-5 lg:flex-row sm:my-10">
+                <div class="flex flex-col min-w-3xs max-w-sm">
                     <ProductFilterPanel
                         @pizzas-loaded="handlePizzasLoaded"
                         :sort-by="pizzasSortBy"
