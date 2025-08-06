@@ -37,7 +37,7 @@ const statusLabels = {
             <h1 class="text-3xl font-bold dark:text-white my-6 sm:text-4xl sm:my-12">Ваш заказ</h1>
             <div class="flex flex-col-reverse gap-5 lg:flex-row lg:gap-10">
                 <CommonCard
-                    width-class="max-w-3xl"
+                    width-class="max-w-3xl lg:flex-1"
                 >
                     <div class="flex justify-between items-center mb-4">
                         <div>
@@ -78,8 +78,8 @@ const statusLabels = {
                     </div>
                 </CommonCard>
                 <CommonCard
-                    width-class="flex-1 max-w-md h-max lg:max-w-[unset]">
-                    <div class="flex items-center gap-x-2 py-4 text-white text-sm leading-5 font-bold sm:text-base">
+                    width-class="max-w-md lg:max-w-[unset]">
+                    <div class="flex items-center gap-x-2 py-2 text-white text-sm leading-5 font-bold sm:text-base sm:py-4">
                         <div class="text-jaffa-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="size-6">
@@ -87,9 +87,9 @@ const statusLabels = {
                                       d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
                             </svg>
                         </div>
-                        <span>{{ currentOrder.first_name + ' ' + currentOrder?.last_name }}</span>
+                        <span>{{ `${currentOrder.first_name} ${currentOrder.last_name || ''}`.trim() }}</span>
                     </div>
-                    <div class="flex items-center gap-x-2 py-4 text-white text-sm leading-5 font-bold sm:text-base">
+                    <div class="flex items-center gap-x-2 py-2 text-white text-sm leading-5 font-bold sm:text-base sm:py-4">
                         <div class="text-jaffa-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="size-6">
